@@ -1208,7 +1208,7 @@ QDocumentGallery::Error QGalleryTrackerSchema::prepareTypeResponse(
             arguments->queryArguments = QVariantList()
                     << QString(QString::fromUtf8("SELECT COUNT(DISTINCT ")
                     + qt_galleryItemTypeList[m_itemIndex].identity
-                    + QLatin1String(") WHERE {")
+                    + QLatin1String(") WHERE { ?x tracker:available true ")
                     + qt_galleryItemTypeList[m_itemIndex].typeFragment
                     + QLatin1String("FILTER(")
                     + QLatin1String(qt_galleryItemTypeList[m_itemIndex].filterFragment)
@@ -1575,7 +1575,7 @@ void QGalleryTrackerSchema::populateItemArguments(
     arguments->sparql
             = QLatin1String("SELECT ")
             + fieldNames.join(QLatin1String(" "))
-            + QLatin1String(" WHERE {")
+            + QLatin1String(" WHERE { ?x tracker:available true ")
             + qt_galleryItemTypeList[m_itemIndex].typeFragment
             + query
             + QLatin1String("}")
